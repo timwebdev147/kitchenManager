@@ -40,6 +40,7 @@ function ChefList(){
         .then((response) => {
             const allChefs = response.data.data.data;
             getChefs(allChefs);
+            alert('delete successful')
             getChefs(
                 chefs.filter((chef) => {
                     return chef.id !== id;
@@ -48,6 +49,7 @@ function ChefList(){
         })
         .catch(error => {
             console.log(error)
+            alert('delete not successful, server error')
         })
         }
         

@@ -40,6 +40,7 @@ function FoodList(){
         .then((response) => {
             const allFoods = response.data.data.data;
             getFoods(allFoods);
+            alert('delete successful')
             getFoods(
                 foods.filter((food) => {
                     return food.id !== id;
@@ -48,6 +49,7 @@ function FoodList(){
         })
         .catch(error => {
             console.log(error)
+            alert('delete not successful, server error')
         })
         }
         
