@@ -148,7 +148,7 @@ function    AddChefForm(){
 
         if (emptyAlert == false) {
             
-            axios.post("http://127.0.0.1:8000/api/chefs", requestObject)
+            axios.post("https://foodlist-api.vercel.app/chefs", requestObject)
             .then(response => {
                 console.log(response.data)
                 if (response.status == 200) {

@@ -74,6 +74,9 @@ $bg_color: #c5c4c4;
                     border: 1px solid $text_color_faded;
                     border-radius: 5px;
                 }
+                input::placeholder{
+                    color: $text_color;
+                }
             }
             .input-field{
                 position: relative;

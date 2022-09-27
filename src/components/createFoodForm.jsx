@@ -257,7 +257,7 @@ function    CreateFoodForm(){
         })
         console.log(requestObject)
 
-        axios.post("http://127.0.0.1:8000/api/foods", requestObject)
+        axios.post("https://foodlist-api.vercel.app/foods", requestObject)
         .then(response => {
             console.log(response.data)
             if (response.status == 200) {

@@ -111,6 +111,7 @@ $bg_color: #c5c4c4;
                 @include mediaQueries.for-phone-only{
                     width: 100%;
                     flex-direction: column;
+                    flex-wrap: nowrap;
                     min-height: 300px;
                     padding-bottom: 100px;
                     padding-top: 10px;
@@ -135,7 +136,7 @@ $bg_color: #c5c4c4;
                     justify-content: center;
                     align-items: center;
                     border-radius: 10px;
-                    img{
+                    p{
                         font-size: 50px;
                         font-family: cursive;
                         font-weight: 900;
@@ -143,7 +144,7 @@ $bg_color: #c5c4c4;
                         color: $text_color;
                         text-transform: capitalize;
                         @include mediaQueries.for-phone-only{
-                            font-size: 20px;
+                            font-size: 30px;
                         }
                     }
                     .deleteBtn{

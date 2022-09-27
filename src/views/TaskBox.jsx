@@ -66,7 +66,7 @@ const TaskBox = () => {
     // const url = 'http://127.0.0.1:8000/api';
 
     const getFoodsAmount = () => {
-        axios.get('http://127.0.0.1:8000/api/foods')
+        axios.get('https://foodlist-api.vercel.app/foods')
         .then((response) => {
             const amounts = response.data.data.data.length;
             setFoodsAmount(amounts);
@@ -75,22 +75,22 @@ const TaskBox = () => {
         .catch(error => {
         })
     }
-    const getUserName = () => {
+    // const getUserName = () => {
 
-        const user = sessionStorage.getItem('isToken');
-        const token = user;
-        console.log(token)
-        axios.post('http://127.0.0.1:8000/api/user-details', {headers: {'Authorization': `Bearer ${token}`}})
-        .then((response) => {
-            const responseData = response;
-            console.log(responseData)
-        })
-        .catch(error => {
-            console.log(error)
-        })
-    }
+    //     const user = sessionStorage.getItem('isToken');
+    //     const token = user;
+    //     console.log(token)
+    //     axios.post('http://127.0.0.1:8000/api/user-details', {headers: {'Authorization': `Bearer ${token}`}})
+    //     .then((response) => {
+    //         const responseData = response;
+    //         console.log(responseData)
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     })
+    // }
     const getChefsAmount = () => {
-        axios.get('http://127.0.0.1:8000/api/chefs')
+        axios.get('https://foodlist-api.vercel.app/chefs')
         .then((response) => {
             const amounts = response.data.data.data.length;
             setChefsAmount(amounts);
@@ -104,7 +104,7 @@ const TaskBox = () => {
     useEffect(() => {
         getFoodsAmount()
         getChefsAmount()
-        getUserName()
+        // getUserName()
     }, [])
 
     

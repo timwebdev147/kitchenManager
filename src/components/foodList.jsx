@@ -15,7 +15,7 @@ function FoodList(){
     const [errorFoods, setErrorFoods] = useState('')
 
 
-    const url = 'http://127.0.0.1:8000/api/foods';
+    const url = 'https://foodlist-api.vercel.app/foods';
 
     const getAllFoods = () => {
         axios.get(url)
@@ -30,7 +30,7 @@ function FoodList(){
     }
 
     const client = axios.create({
-        baseURL: 'http://127.0.0.1:8000/api/foods'
+        baseURL: 'https://foodlist-api.vercel.app/foods'
     });
     
 
@@ -103,7 +103,7 @@ function FoodList(){
                            foods.length > 0 ? foods.map((food) => {
                               return  <div className="card" key={food.id}>
                                     <div className="imageContainer">
-                                        <img src="" alt={food.food} />
+                                        <p>{food.food}</p>
                                         <button onClick={() =>deleteFood(food.id) } className="deleteBtn">
                                             <MdDeleteForever/>&nbsp;Delete Recipe
                                         </button>

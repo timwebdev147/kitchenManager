@@ -3,7 +3,7 @@ import '../styles/register.modules.scss'
 import Navbar from "./Navbar";
 import { HiMail} from 'react-icons/hi';
 import { RiLockPasswordFill, RiLoginCircleFill } from 'react-icons/ri';
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
@@ -79,6 +79,7 @@ function MyRegister(){
         
     // }, [])
 
+    const navigate = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault();
         let requestObject = {};
@@ -86,11 +87,12 @@ function MyRegister(){
         formFields.forEach(field => {
                 requestObject[field.name] = field.value
         })
-        axios.post("http://127.0.0.1:8000/api/register", requestObject/* {
+        axios.post("https://foodlist-api.vercel.app/register", requestObject/* {
             Accepts: 'application/json',
             Authorization: `Bearer ${token}`
         }*/).then(response => {
                 console.log(response)
+                navigate('/login')
                 
         }).catch(error => {
             console.log(error.response.data)

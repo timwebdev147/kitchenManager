@@ -54,7 +54,11 @@ function MyLogin(){
             requestObject[field.name] = field.value
         })
 
-        axios.post("https://foodlist-pusc6cy21-timwebdev147.vercel.app/login", requestObject)
+        axios.post("https://foodlist-api.vercel.app/login", requestObject, {
+            headers: {
+               'Content-Type': 'application/json'
+            } 
+         })
         .then(response => {
             console.log(response.data)
             if (response.status = 200) {
@@ -62,11 +66,13 @@ function MyLogin(){
                 sessionStorage.setItem("isToken", JSON.stringify(data))
                 window.localStorage.setItem("isLoggedIn", true)
                 // window.location = '/taskbox';
+                alert('Welcome');
                 navigate('/taskbox')
             }
         })
         .catch(error => {
             console.log(error.response.data)
+            alert('incorrect username and password')
         })
         // alert(`The name you entered was: ${name}`)
       };
