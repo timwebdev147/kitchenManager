@@ -1,0 +1,110 @@
+ /* define primary colors */
+ $primary_1: #a2b9bc;
+ $primary_2: #b2ad7f;
+ $text_color: #12131f;
+ $primary_3: #687d80;
+ $default: white;
+@use 'mediaQueries.modules.scss';
+
+
+ @mixin link {
+  text: {
+    decoration: none;
+    transform: lowercase;
+  }
+  color: $text_color;
+  font: {
+    size: medium;
+  }
+ }
+ /* use the variables */
+ .d-none{
+  display: none;
+  &.nav-rep{
+    display: block;
+    height: 70px;
+  }
+ }
+ .navbar {
+  background-color: $primary_1;
+  display: flex;
+  height: 75px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.2s;
+  &.sticky{
+    position: fixed;
+    transition: 0.2s;
+    top: 0;
+    height: 70px;
+    z-index: 1;
+    box-shadow: 2px 6px 8px grey;
+  }
+  
+  .logo-container{
+    overflow: hidden;
+    height: 100%;
+    display: inherit;
+    justify-content: center;
+    align-items: inherit;
+    @include mediaQueries.for-phone-only{
+      // width: 200px;
+      position: relative;
+      left: -20px;
+    }
+    
+  }
+
+  img{
+    height: 280%;
+    @include mediaQueries.for-phone-only{
+      // width: 150px;
+      height: 250%;
+    }
+  }
+
+   ul{
+    list-style-type: none;
+    display: flex;
+    // border: 1px solid black;
+    min-width: 15%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+    padding: {
+      right: 30px;
+    }
+    margin: {
+      // top: 0;
+    }
+    
+    li{
+      @include mediaQueries.for-phone-only{
+        display: none;
+    }
+      margin: 0 2px;
+    :hover{
+      color: red;
+    }
+    a{
+      @include link();
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  .navDropdown{
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    display: none;
+    cursor: pointer;
+    @include mediaQueries.for-phone-only{
+      display: block;
+  }
+  }
+}
+   
+ } 

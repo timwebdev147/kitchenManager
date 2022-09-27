@@ -1,0 +1,226 @@
+$primary_1: #a2b9bc;
+$primary_2: #ff1818;
+$primary_3: #687d80;
+$default: #a2b9bc8c;
+$primary_3_faded: rgba(104, 125, 128, 0.2);
+$text_color: #12131f;
+$text_color_faded: rgba(18, 19, 31, 0.6);
+$bg_color: #c5c4c4;
+@use  "mediaQueries.modules.scss";
+
+@mixin link {
+    text: {
+      decoration: none;
+    }
+    color: $primary_2;
+    font: {
+      size: medium;
+    }
+   }
+
+
+.CreateFood-page{
+    width: 100%;
+    // border: 1px solid black;
+    min-height: calc( 100%);
+    display: flex;
+    padding: {
+        bottom: 100px;
+        top: 100px;
+    } 
+    justify-content: center;
+    align-items: center;
+    @include mediaQueries.for-phone-only{
+        background-image: linear-gradient(white, $default);
+        padding: 0;
+    }
+    
+    .form-container{
+        width: calc( 60% - 50px );
+        background-color: $primary_1;
+        
+        // box-shadow: 2px 2px 15px 5px $primary_3;
+        border-radius: 5px;
+        min-height: 950px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        padding: {
+            left: 25px;
+            right: 25px;
+        }
+        @include mediaQueries.for-phone-only{
+            width: calc(100% - 50px);
+        background-color: transparent;
+
+        }
+        h2{
+            position: relative;
+            top: 10px;
+            color: $text_color;
+        }
+        form{
+            width: 100%;
+            height: 80%;
+            display: inherit;
+            flex-direction: row;
+            align-items: inherit;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            div{
+                width: 100%; 
+                display: inherit;
+                justify-content: center;
+                position: relative;
+                input, select, button{
+                    width: 100%;
+                    height: 35px;
+                    border: 1px solid $text_color_faded;
+                    border-radius: 5px;
+                }
+                label{
+                    @include mediaQueries.for-phone-only{
+                       font-size: small;
+                    }
+                }
+            }
+            .input-field{
+                position: relative;
+                top: 40px;
+                display: block;
+                // align-items: center;
+                margin-bottom: 10px;
+                :focus{
+                    outline: #ff1818;
+                    border: 1px solid $primary_2;
+                }
+                .icon{
+                    position: initial;
+                    left: 0;
+                }
+                input, select{
+                    padding-left: 0;
+                    margin-top: 2px;
+                    background-color: $primary_3_faded;
+                }
+                textarea{
+                    padding-left: 0;
+                    border: 1px solid $text_color_faded;
+                    border-radius: 5px;
+                    width: 100%;
+                    height: 100px;
+                    margin-top: 2px;
+                    background-color: $primary_3_faded;
+                }
+            }
+            .half-width{
+                width: 48%;
+            }
+            
+            div.input-field:nth-last-child(3){
+                // margin-bottom: 0px;
+            }
+            .input-field:first-child [placeholder]{
+                        // color: white;
+                    }
+            .form-submit{
+                position: relative;
+                bottom: -100px;
+                
+                button{
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: $primary_3;
+                    .icon{
+                        font: {
+                            size: large;
+                        }
+                    }
+                }
+            }
+            .sign_up_link{
+                position: relative;
+                bottom: -110px;
+                a{
+                @include link()
+            }
+            }
+            
+            
+            
+
+            
+
+        }
+}
+
+.afterSubmit{
+    border: 1px solid black;
+    width: 80%;
+    height: 88vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    .successCard{
+        background-color: #ccd8d9;
+        width: 400px;
+        min-height: 200px;
+        padding: 15px;
+        border: 1px solid black;
+        border-radius: 5px;
+        h1{
+            color: green;
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-around;
+            a{
+                padding: {
+                    top: 20px;
+                    bottom: 20px;
+                    left: 30px;
+                    right: 30px;
+                }
+                background-color: #a2b9bc;
+                text-decoration: none;
+                color: $text_color;
+                border-radius: 10px;
+
+            }
+        }
+    }
+    .failedCard{
+        background-color: #ccd8d9;
+        width: 400px;
+        min-height: 200px;
+        padding: 15px;
+        border: 1px solid black;
+        border-radius: 5px;
+        h1{
+            color: red;
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-around;
+            a{
+                padding: {
+                    top: 20px;
+                    bottom: 20px;
+                    left: 30px;
+                    right: 30px;
+                }
+                background-color: #a2b9bc;
+                text-decoration: none;
+                color: $text_color;
+                border-radius: 10px;
+
+            }
+        }
+    }
+}
+}

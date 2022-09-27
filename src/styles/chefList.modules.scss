@@ -1,0 +1,247 @@
+$primary_1: #a2b9bc;
+$primary_2: #ff1818;
+$primary_3: #687d80;
+$default: #a2b9bc8c;
+$primary_3_faded: rgba(104, 125, 128, 0.2);
+$text_color: #12131f;
+$text_color_faded: rgba(18, 19, 31, 0.6);
+$bg_color: #c5c4c4;
+@use "mediaQueries.modules.scss";
+
+
+.chefList-page{
+    width: 100%;
+    min-height: calc( 100%);
+    display: flex;
+    
+    color: $text_color;
+    padding: {
+        bottom: 100px;
+        top: 100px;
+    } 
+    justify-content: center;
+    align-items: center;
+    @include mediaQueries.for-phone-only{
+        // background-image: linear-gradient(white, white);
+        background-color: transparent;
+        min-height: 100vh;
+        padding: 0;
+    }
+
+    .chef-container{
+        min-width: calc( 100% - 50px );
+        // background-color: $primary_1;
+        // box-shadow: 2px 2px 15px 5px $primary_3;
+        border-radius: 5px;
+        min-height: 950px;
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        padding: {
+            left: 25px;
+            right: 25px;
+        }
+        @include mediaQueries.for-phone-only{
+            width: calc(90%);
+            min-width: 0;
+            justify-content: space-between;
+            height: auto;
+            min-height: 0;
+            padding: {
+                left: 0px;
+                right: 0px;
+            }
+        }
+        h2{
+            position: relative;
+            top: 10px;
+            color: $text_color;
+            padding-bottom: 50px;
+        }
+        .cheflist{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .connectingIndicator{
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+            .refreshBtn{
+                padding: {
+                    top: 10px;
+                    bottom: 10px;
+                    left: 20px;
+                    right: 20px;
+                }
+                color: $text_color;
+                background-color: $primary_1;
+                border: none;
+                width: 300px;
+                border-radius: 10px;
+                font-size: 15px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                cursor: pointer;
+            }
+
+
+            .card{
+                width: 900px;
+                // border: 1px solid black;
+                background-color: #97adb1;
+                // box-shadow: 1px 3px 10px 1px $primary_3;
+                min-height: 300px;
+                border-radius: 10px;
+                margin-bottom: 100px;
+                display: flex;
+                box-shadow: 1px 1px 4px 1px $primary_3;
+                @include mediaQueries.for-phone-only{
+                    width: 100%;
+                    flex-direction: column;
+                    min-height: 300px;
+                    padding-bottom: 100px;
+                    padding-top: 10px;
+                    position: relative;
+                }
+                .imageContainer{
+                    @include mediaQueries.for-phone-only{
+                        width: calc(100% - 20px);
+                        padding: {
+                            left: 10px;
+                            right: 10px;
+                        }
+                        height: 50px;
+                        // min-height: 100px;
+                    }
+                    width: 40%;
+                    height: auto;
+                    // border: 1px solid black;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+                    img{
+                        font-size: 50px;
+                        font-family: cursive;
+                        font-weight: 900;
+                        width: 100%;
+                        color: $text_color;
+                        text-align: center;
+                        text-transform: capitalize;
+                        @include mediaQueries.for-phone-only{
+                            font-size: 20px;
+                        }
+                    }
+                    .deleteBtn{
+                        box-shadow: 1px 1px 4px 1px $primary_3;
+                        padding: {
+                            top: 10px;
+                            bottom: 10px;
+                            left: 20px;
+                            right: 20px;
+                        }
+                        color: $text_color;
+                        background-color: $primary_1;
+                        border: none;
+                        width: 300px;
+                        border-radius: 10px;
+                        position: absolute;
+                        bottom: 10px;
+                        font-size: 15px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                        @include mediaQueries.for-phone-only{
+                            bottom: 25px;
+                        height: 50px;
+                        width: 200px;
+                        margin-left: auto;
+                        margin-right: auto;
+                            }
+                    }
+                }
+                .info{
+                    @include mediaQueries.for-phone-only{
+                        width: calc(100% - 20px);
+                        // min-height: 100px;
+                    }
+                    width: calc(60% - 20px);
+                    height: calc(100% - 20px);
+
+                    padding: {
+                        left: 10px;
+                        right: 10px;
+                        top: 10px;
+                        bottom: 10px;
+                    }
+
+                    .time, .type{
+                        display: flex;
+                        width: calc(100% - 10px);
+                        height: 50px;
+                        justify-content: space-between;
+                        box-shadow: 1px 1px 4px 1px $primary_3;
+                        align-items: center;
+                        padding: {
+                            left: 5px;
+                            right: 5px;
+                        }
+                        span{
+                            display: inherit;
+                            align-items: inherit;
+                            justify-content: inherit;
+                        }
+                        @include mediaQueries.for-phone-only{
+                            font-size: 13px;
+                        }
+                    }
+                    .description, .instruction, .ingredient{
+                        width: calc(100% - 10px);
+                        min-height: calc(100px - 10px);
+                        box-shadow: 1px 1px 4px 1px $primary_3;
+                        padding: {
+                            left: 5px;
+                            right: 5px;
+                            top: 5px;
+                            bottom: 5px;
+                        }
+                        @include mediaQueries.for-phone-only{
+                            font-size: 13px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .firstDot{
+        animation-name: firstDot;
+        animation-duration: 2s;
+        animation-iteration-count: infinite;
+        visibility: hidden;
+        animation-direction: reverse;
+
+    }
+    .secondDot{
+        animation-name: secondDot;
+        animation-duration: 2s;
+        // animation-delay: 2s;
+        animation-iteration-count: infinite;
+        animation-direction: reverse;
+        visibility: hidden;
+    }
+    @keyframes firstDot {
+        25%{ visibility: hidden;}
+        50%{ visibility: initial;}
+        // 75%{ visibility: hidden;}
+    }
+    @keyframes secondDot {
+        25%{ visibility: hidden;}
+        50%{ visibility: initial;}
+        75%{ visibility: hidden;}
+    }
+}
