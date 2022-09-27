@@ -215,7 +215,7 @@ function    CreateFoodForm(){
     const [formFields, dispatch] = useReducer(reducer, initialFieldsState);
 
     const [condition, setCondition] = useState(false);
-    const [afterSubmit, setAfterSubmit] = useState(true)
+    const [afterSubmit, setAfterSubmit] = useState(false)
     const [emptyAlert, setEmptyAlert] = useState(null);
 
     const updateFieldValue = (index, value ) => {
