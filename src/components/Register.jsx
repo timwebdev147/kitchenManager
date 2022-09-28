@@ -53,7 +53,7 @@ function MyRegister(){
             placeholder: 'Your password',
             name: 'password',
             value: '',
-            type: 'text',
+            type: 'password',
 
         },
         {
@@ -64,7 +64,7 @@ function MyRegister(){
             placeholder: 'Confirm password',
             name: 'c_password',
             value: '',
-            type: 'text',
+            type: 'password',
 
         }
     ]
