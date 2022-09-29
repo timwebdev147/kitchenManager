@@ -135,9 +135,9 @@ function FoodList(){
                                             <p><b>Instructions</b>:</p>
                                             <p>{food.instructions}</p>
                                         </div>
-                                        <div className="time">
+                                        {/* <div className="time">
                                         <span><BiTimeFive/>&nbsp;Created/Added at: {food['created_at']}</span>
-                                        </div>
+                                        </div> */}
                                         
                                     </div>
                                 </div>
