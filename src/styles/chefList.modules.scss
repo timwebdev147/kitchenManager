@@ -71,6 +71,10 @@ $bg_color: #c5c4c4;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                @include mediaQueries.for-phone-only{
+                    position: relative;
+                    bottom: 200px;
+                }
             }
             .refreshBtn{
                 padding: {
