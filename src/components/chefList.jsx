@@ -123,6 +123,9 @@ function ChefList(){
                                             <p><b>About Chef</b>:</p>
                                             <p>{chef.about}</p>
                                         </div>
+                                        <div className="time">
+                                        <span><BiTimeFive/>&nbsp;Registered/Added at: {chef['created_at']}</span>
+                                        </div>
                                         
                                     </div>
                                 </div>
