@@ -1,6 +1,6 @@
 import '../styles/navbar.modules.scss';
 import logo from '../images/logo.png'
-import { Outlet, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useState } from 'react';
 import { useEffect } from 'react';
 import {FaBars} from 'react-icons/fa'
@@ -81,7 +81,9 @@ function Navbar(props){
         <div className={scrollPosition > 5 ? 'nav-rep d-none' : "d-none"}></div>
         <nav  className={scrollPosition > 5 ? 'sticky navbar '+props.customClass : "navbar "+props.customClass}>
             <div className='logo-container'><img src={logo} alt="" /></div>
-            
+            <p>
+            Copyright © Kitchen-Manager 2022 Created By Akinsanmi Timothy
+            </p>
             <ul>
                
                 {navMenu.map((list) => (

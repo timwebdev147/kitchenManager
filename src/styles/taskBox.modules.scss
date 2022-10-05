@@ -29,6 +29,9 @@ $text_color_faded: rgba(18, 19, 31, 0.6);
         @include mediaQueries.for-phone-only{
             display: none;
         }
+        @include mediaQueries.for-tablet-landscape-up{
+            width: 200px;
+        }
     }
     .sidebar{
         height: calc(500px - 60px);
@@ -46,6 +49,9 @@ $text_color_faded: rgba(18, 19, 31, 0.6);
             display: none;
             // transition: 0.5s;
             padding: 0;
+        }
+        @include mediaQueries.for-tablet-landscape-up{
+            width: 200px;
         }
         ul{
             padding: 0;
@@ -99,6 +105,12 @@ $text_color_faded: rgba(18, 19, 31, 0.6);
         }
         .mobileLink{
             display: none;
+        }
+        p{
+            
+            display: none;
+            color: $text_color_faded;
+            font-size: x-small;
         }
         .submenu-container{
             display: block;
@@ -169,6 +181,10 @@ $text_color_faded: rgba(18, 19, 31, 0.6);
         @include mediaQueries.for-phone-only{
            .mobileLink{
                display: initial;
+           }
+           p{
+            display: initial;
+            width: auto;
            }
            display: flex;
            width: 100%;

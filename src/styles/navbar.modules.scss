@@ -63,6 +63,16 @@
       height: 250%;
     }
   }
+  p{
+    font-size: x-small;
+    @include mediaQueries.for-tablet-landscape-up{
+      // display: none;
+      font-size: x-small;
+    }
+    @include mediaQueries.for-phone-only{
+      display: none;
+    }
+  }
 
    ul{
     list-style-type: none;

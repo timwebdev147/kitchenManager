@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import '../styles/register.modules.scss'
 import Navbar from "./Navbar";
+import Loader from "./Loader"
 import { HiMail} from 'react-icons/hi';
 import { RiLockPasswordFill, RiLoginCircleFill } from 'react-icons/ri';
 import { Outlet, Link, useNavigate } from "react-router-dom";
@@ -70,6 +71,11 @@ function MyRegister(){
     ]
 
     const [formFields, updateFormFields] = useState(field);
+    const [clicked, setClicked] = useState(false);
+    const [serverResponse, setServerResponse] = useState();
+    const [emailResponse, setEmailResponse] = useState();
+    const [nameResponse, setNameResponse] = useState();
+    const [passwordResponse, setPasswordResponse] = useState();
 
     useEffect(() => {
         console.log('Re-rendered:', formFields)
@@ -82,6 +88,7 @@ function MyRegister(){
     const navigate = useNavigate()
     const handleSubmit = (event) => {
         event.preventDefault();
+        setClicked(true);
         let requestObject = {};
 
         formFields.forEach(field => {
@@ -92,10 +99,28 @@ function MyRegister(){
             Authorization: `Bearer ${token}`
         }*/).then(response => {
                 console.log(response)
+                setClicked(false)
+                setServerResponse("success")
                 navigate('/login')
                 
         }).catch(error => {
-            console.log(error.response.data)
+            console.log(error.response)
+            if (error.response.data == undefined) {
+            setClicked(false)
+                return null
+            } else{
+
+                if(error.response.data.error.email.length > 0){
+                    setEmailResponse("Email has already been taken.")
+            }if(error.response.data.error.name.length > 0){
+                setNameResponse("Name field is required.")
+            }if(error.response.data.error.c_password[0] == 'The c password field is required.'){
+                setPasswordResponse("Confirm password field is required.")
+            }if(error.response.data.error.c_password[0] == "The c password and password must match."){
+                setPasswordResponse("Confirm password and password must match.")
+            }
+        }
+            setClicked(false)
         })
       //  alert(`The name you entered was: ${firstname + " " + lastname}`)
       
@@ -121,12 +146,19 @@ function MyRegister(){
                 <div className={item.className} key={item.id}>
                     <label htmlFor="">{item.label}</label>
                 <input name={item.name} type={item.type} placeholder={item.placeholder} value={item.value} onChange={event => handleChange(event.target.value, index)} />
+                <span className="errorMessage">
+                    {
+                    item.id == 'email'? emailResponse:
+                    item.id == 'confirm-password'? passwordResponse:
+                    item.id ==  'lastname'? nameResponse: null
+                    }
+                </span>
                 </div>
             ))}
 
            
             <div className="form-submit">
-                <button type="submit"> <RiLoginCircleFill className="icon" /> </button>
+                <button type="submit"> {clicked == true?<Loader customClass="myLoader" className="" /> : <RiLoginCircleFill className="icon" /> }</button>
             </div>
             <div className="sign_up_link">
                 <p>

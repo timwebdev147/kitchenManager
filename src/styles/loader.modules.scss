@@ -1,0 +1,9 @@
+.loader{
+    border: 5px solid transparent;
+    // border-image: linear-gradient(grey, rgb(0, 194, 253)) 1;
+    background: linear-gradient(#fff, #fff) padding-box,
+                linear-gradient( grey 60%, rgb(0, 194, 253)) border-box;
+    width: 15px;
+    height: 15px;
+    border-radius: 300px;
+}

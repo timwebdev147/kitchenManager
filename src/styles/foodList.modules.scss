@@ -108,6 +108,15 @@ $bg_color: #c5c4c4;
                 display: flex;
                 flex-wrap: wrap;
                 box-shadow: 1px 1px 4px 1px $primary_3;
+                @include mediaQueries.for-tablet-landscape-up{
+                    width: 100%;
+                    flex-direction: row;
+                    flex-wrap: wrap;
+                    min-height: 300px;
+                    padding-bottom: 0px;
+                    padding-top: 10px;
+                    position: relative;
+                }
                 @include mediaQueries.for-phone-only{
                     width: 100%;
                     flex-direction: column;
@@ -169,6 +178,13 @@ $bg_color: #c5c4c4;
                         cursor: pointer;
                         @include mediaQueries.for-phone-only{
                         bottom: 25px;
+                        height: 50px;
+                        width: 200px;
+                        margin-left: auto;
+                        margin-right: auto;
+                        }
+                        @include mediaQueries.for-tablet-landscape-up{
+                            bottom: 25px;
                         height: 50px;
                         width: 200px;
                         margin-left: auto;

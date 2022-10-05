@@ -25,10 +25,14 @@ $text_color_faded: rgba(18, 19, 31, 0.6);
    }
 .Login-page{
     width: 100%;
-    min-height: calc( 100vh - 75px - 2px );
+    min-height: calc( 100vh - 75px - 2px - 200px );
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: {
+        bottom: 100px;
+        top: 100px;
+    } 
     
     // background-color: $default;
     
@@ -41,13 +45,24 @@ $text_color_faded: rgba(18, 19, 31, 0.6);
         display: flex;
         flex-direction: column;
         align-items: center; 
+        @include mediaQueries.for-tablet-landscape-up{
+            width: 50%;
+        }
         @include mediaQueries.for-phone-only{
-            width: 90%;
+            width: 85%;
         }
         h2{
             position: relative;
             top: 10px;
             color: $text_color;
+        }
+        .green{
+            color: green;
+            font-size: small;
+        }
+        .red{
+            color: #ff1818;
+            font-size: small;
         }
         form{
             width: 100%;
@@ -55,7 +70,7 @@ $text_color_faded: rgba(18, 19, 31, 0.6);
             display: inherit;
             flex-direction: inherit;
             align-items: inherit;
-            div{
+            >div{
                 width: 90%;
                 display: inherit;
                 justify-content: center;
@@ -100,11 +115,53 @@ $text_color_faded: rgba(18, 19, 31, 0.6);
                 bottom: -100px;
                 button{
                     cursor: pointer;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
                     background-color: $primary_3;
                     .icon{
                         font: {
                             size: large;
                         }
+                    }
+                    .myLoader{
+                        background: linear-gradient(#687d80, #687d80) padding-box,
+                                    linear-gradient(gray 60%, rgb(0, 194, 253)) border-box;
+                                    animation: spin 1s infinite ease-in;
+                                    @keyframes spin {
+                                        0% {
+                                            background: linear-gradient(#687d80, #687d80) padding-box,
+                                                linear-gradient(0deg, grey 60%, rgb(0, 194, 253)) border-box;
+                                        }
+                                        15% {
+                                            background: linear-gradient(#687d80, #687d80) padding-box,
+                                                linear-gradient(45deg, grey 60%, rgb(0, 194, 253)) border-box;
+                                        }
+                                        30% {
+                                            background: linear-gradient(#687d80, #687d80) padding-box,
+                                                linear-gradient(90deg, grey 60%, rgb(0, 194, 253)) border-box;
+                                        }
+                                        45% {
+                                            background: linear-gradient(#687d80, #687d80) padding-box,
+                                                linear-gradient(135deg, grey 60%, rgb(0, 194, 253)) border-box;
+                                        }
+                                        60% {
+                                            background: linear-gradient(#687d80, #687d80) padding-box,
+                                                linear-gradient(180deg, grey 60%, rgb(0, 194, 253)) border-box;
+                                        }
+                                        75% {
+                                            background: linear-gradient(#687d80, #687d80) padding-box,
+                                                linear-gradient(225deg, grey 60%, rgb(0, 194, 253)) border-box;
+                                        }
+                                        90% {
+                                            background: linear-gradient(#687d80, #687d80) padding-box,
+                                                linear-gradient(270deg, grey 60%, rgb(0, 194, 253)) border-box;
+                                        }
+                                        100% {
+                                            background: linear-gradient(#687d80, #687d80) padding-box,
+                                                linear-gradient(315deg, grey 60%, rgb(0, 194, 253)) border-box;
+                                        }
+                                    }
                     }
                 }
             }

@@ -171,6 +171,9 @@ const TaskBox = () => {
                         <Link className="mobileLink" to={'#'}><RiAccountCircleFill className="menu-icon" /> Account</Link>
                         <Link className="mobileLink" onClick={signOut} to={'#'}><RiLogoutCircleFill className="menu-icon" /> Logout</Link>
                     </ul>
+                    <p>
+                    Copyright © Kitchen-Manager 2022 Created By Akinsanmi Timothy
+                    </p>
                 </div>
                 <div className="taskDisplay">
                     <Outlet />

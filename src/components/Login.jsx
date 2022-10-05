@@ -1,6 +1,8 @@
 import { useState } from "react";
 import '../styles/login.modules.scss'
 import { HiMail} from 'react-icons/hi';
+import Loader from "../components/Loader";
+
 import { RiLockPasswordFill, RiLoginCircleFill } from 'react-icons/ri';
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
@@ -40,6 +42,8 @@ function MyLogin(){
     ];
 
     const [formFields, updateFormFields] = useState(field);
+    const [clicked, setClicked] = useState(false);
+    const [serverResponse, setServerResponse] = useState();
 
     useEffect(() => {
         console.log(formFields);
@@ -48,6 +52,7 @@ function MyLogin(){
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setClicked(true);
         
         let requestObject = {};
         formFields.forEach(field => {
@@ -66,13 +71,22 @@ function MyLogin(){
                 sessionStorage.setItem("isToken", JSON.stringify(data))
                 window.localStorage.setItem("isLoggedIn", true)
                 // window.location = '/taskbox';
-                alert('Welcome');
+                setServerResponse("success")
+                // alert('Welcome');
                 navigate('/taskbox')
+                setClicked(false)
             }
         })
         .catch(error => {
-            console.log(error.response.data)
-            alert('incorrect username and password')
+            console.log(error.response)
+            if(error.response.statusText == "Unauthorized"){
+                setServerResponse("incorrect username and password")
+                // alert('incorrect username and password')
+            }else if(error.response.data == undefined){
+                setServerResponse("cannot connect to server")
+                // alert('cannot connect to server')
+            }
+            setClicked(false)
         })
         // alert(`The name you entered was: ${name}`)
       };
@@ -89,6 +103,15 @@ function MyLogin(){
         <section className="Login-page">
             <div className="form-container">
             <h2>Sign in and connect</h2>
+            {serverResponse == "success!"?
+            <span className="green">
+                {serverResponse}
+            </span>:
+            <span className="red">
+                {serverResponse}
+            </span>
+
+            }
         <form onSubmit={handleSubmit}>
                 {formFields.map((item, index) => (
                 <div className={item.className} key={item.id}>
@@ -96,9 +119,8 @@ function MyLogin(){
                 <input name={item.name} type={item.type} placeholder={item.placeholder} value={item.value} onChange={event => handleChange(event.target.value, index)} />
                 </div>
             ))}
-            
             <div className="form-submit">
-                <button type="submit"> <RiLoginCircleFill className="icon" /> </button>
+                <button type="submit"> {clicked == true?<Loader customClass="myLoader" className="" /> : <RiLoginCircleFill className="icon" /> }</button>
             </div>
             <div className="sign_up_link">
                 <p>
