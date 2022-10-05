@@ -2,7 +2,6 @@ import React from "react";
 import { useEffect } from "react";
 import { Outlet, Link, useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Loader from "../components/Loader";
 import '../styles/baseView.modules.scss';
 import { GiArchiveRegister } from "react-icons/gi";
 import {IoIosLogIn, IoIosPersonAdd, IoLogInSharp} from "react-icons/io"
@@ -48,7 +47,6 @@ const BaseView = () => {
         </div>
         <>
             <Outlet/>
-            <Loader/>
         </>
     </>
 }
