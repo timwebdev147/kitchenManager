@@ -82,9 +82,11 @@ function MyLogin(){
             if(error.response.statusText && error.response.statusText == "Unauthorized"){
                 setServerResponse("incorrect username and password")
                 // alert('incorrect username and password')
-            }if(error.response.data && error.response.data == undefined){
+            }else if(error.response.data && error.response.data == undefined){
                 setServerResponse("cannot connect to server, please try again.")
                 // alert('cannot connect to server')
+            }else{
+                setServerResponse()
             }
             setClicked(false)
         })

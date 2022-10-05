@@ -76,6 +76,8 @@ function MyRegister(){
     const [emailResponse, setEmailResponse] = useState();
     const [nameResponse, setNameResponse] = useState();
     const [passwordResponse, setPasswordResponse] = useState();
+    const [c_passwordResponse, setC_passwordResponse] = useState();
+
 
     useEffect(() => {
         console.log('Re-rendered:', formFields)
@@ -110,15 +112,34 @@ function MyRegister(){
                 return null
             } else{
 
-                if(error.response.data.error.email && error.response.data.error.email.length > 0){
+            if(error.response.data.error.email && error.response.data.error.email[0] ==  "The email has already been taken."){
                     setEmailResponse("Email has already been taken.")
-            }if(error.response.data.error.name && error.response.data.error.name.length > 0){
-                setNameResponse("Name field is required.")
-            }if(error.response.data.error.c_password && error.response.data.error.c_password[0] == 'The c password field is required.'){
-                setPasswordResponse("Confirm password field is required.")
-            }if(error.response.data.error.c_password && error.response.data.error.c_password[0] == "The c password and password must match."){
-                setPasswordResponse("Confirm password and password must match.")
+            }else if(error.response.data.error.email && error.response.data.error.email[0] ==  "The email field is required."){
+                setEmailResponse("Email field is required.")
+            }else{
+                setEmailResponse()
             }
+
+            if(error.response.data.error.name && error.response.data.error.name.length > 0){
+                setNameResponse("Name field is required.")
+            }else{
+                setNameResponse()
+            }
+
+            if(error.response.data.error.password && error.response.data.error.password[0] == "The password field is required."){
+                setPasswordResponse("Password field is required.")
+            }else{
+                setPasswordResponse()
+            }
+            
+            if(error.response.data.error.c_password && error.response.data.error.c_password[0] == 'The c password field is required.'){
+                setC_passwordResponse("Confirm password field is required.")
+            }else if(error.response.data.error.c_password && error.response.data.error.c_password[0] == "The c password and password must match."){
+                setC_passwordResponse("Confirm password and password must match.")
+            }else{
+                setC_passwordResponse()
+            }
+
         }
             setClicked(false)
         })
@@ -149,7 +170,8 @@ function MyRegister(){
                 <span className="errorMessage">
                     {
                     item.id == 'email'? emailResponse:
-                    item.id == 'confirm-password'? passwordResponse:
+                    item.id == 'confirm-password'? c_passwordResponse:
+                    item.id == 'password'? passwordResponse:
                     item.id ==  'lastname'? nameResponse: null
                     }
                 </span>
