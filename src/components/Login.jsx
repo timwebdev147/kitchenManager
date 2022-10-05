@@ -79,11 +79,11 @@ function MyLogin(){
         })
         .catch(error => {
             console.log(error.response)
-            if(error.response.statusText == "Unauthorized"){
+            if(error.response.statusText && error.response.statusText == "Unauthorized"){
                 setServerResponse("incorrect username and password")
                 // alert('incorrect username and password')
-            }else if(error.response.data == undefined){
-                setServerResponse("cannot connect to server")
+            }if(error.response.data && error.response.data == undefined){
+                setServerResponse("cannot connect to server, please try again.")
                 // alert('cannot connect to server')
             }
             setClicked(false)

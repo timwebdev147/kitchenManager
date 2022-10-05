@@ -110,13 +110,13 @@ function MyRegister(){
                 return null
             } else{
 
-                if(error.response.data.error.email.length > 0){
+                if(error.response.data.error.email && error.response.data.error.email.length > 0){
                     setEmailResponse("Email has already been taken.")
-            }if(error.response.data.error.name.length > 0){
+            }if(error.response.data.error.name && error.response.data.error.name.length > 0){
                 setNameResponse("Name field is required.")
-            }if(error.response.data.error.c_password[0] == 'The c password field is required.'){
+            }if(error.response.data.error.c_password && error.response.data.error.c_password[0] == 'The c password field is required.'){
                 setPasswordResponse("Confirm password field is required.")
-            }if(error.response.data.error.c_password[0] == "The c password and password must match."){
+            }if(error.response.data.error.c_password && error.response.data.error.c_password[0] == "The c password and password must match."){
                 setPasswordResponse("Confirm password and password must match.")
             }
         }
