@@ -50,6 +50,10 @@ function MyLogin(){
     }, [formFields]);
     const navigate = useNavigate();
 
+    const delay = ms => new Promise(
+        resolve => setTimeout(resolve, ms)
+    );
+
     const handleSubmit = (event) => {
         event.preventDefault();
         setClicked(true);
@@ -71,9 +75,15 @@ function MyLogin(){
                 sessionStorage.setItem("isToken", JSON.stringify(data))
                 window.localStorage.setItem("isLoggedIn", true)
                 // window.location = '/taskbox';
-                setServerResponse("success")
+                setServerResponse("success!")
                 // alert('Welcome');
-                navigate('/taskbox')
+                // setTimeout(, 5000)
+                async function makeRequest() {
+
+                    await delay(1500);  
+                    navigate('/taskbox')
+                }
+                makeRequest();
                 setClicked(false)
             }
         })
