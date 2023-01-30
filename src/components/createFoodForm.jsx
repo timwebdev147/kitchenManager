@@ -147,7 +147,7 @@ function    CreateFoodForm(){
                 name: 'cuisine',
                 label: 'Cuisine Type',
                 type: '',
-                value: '',
+                value: 'African',
                 fieldType: 'dropdown',
                 optionType: 'cuisine'
             },
@@ -156,7 +156,7 @@ function    CreateFoodForm(){
                 name: 'dish-type',
                 label: 'Dish type',
                 type: '',
-                value: '',
+                value: 'Beverage',
                 fieldType: 'dropdown',
                 optionType: 'dish',
             },
@@ -230,7 +230,7 @@ function    CreateFoodForm(){
         console.log(e.target.files)
         // image.value = e.target.value;
         // image.url = URL.createObjectURL(e.target.files[0]);
-        setImage(URL.createObjectURL(e.target.files[0]))
+        setImage(e.target.files[0])
         // setImage(image);
     }
     console.log(image)
@@ -238,13 +238,14 @@ function    CreateFoodForm(){
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        
-        let requestObject = {};
+        const formData = new FormData();
+
         formFields.fields.forEach(field => {
-            requestObject[field.name] = field.value
 
             if (field.type == 'file') {
-                requestObject[field.name] = image;
+                formData.append('image', image)
+            }else{
+                formData.append(field.name, field.value);
             }
             if (field.type != 'file') {
                 
@@ -255,9 +256,9 @@ function    CreateFoodForm(){
                 }
             }
         })
-        console.log(requestObject)
+        console.log(formData)
 
-        axios.post("https://foodlist-api.vercel.app/foods", requestObject)
+        axios.post("https://foodlist-api.vercel.app/foods", formData)
         .then(response => {
             console.log(response.data)
             if (response.status == 200) {

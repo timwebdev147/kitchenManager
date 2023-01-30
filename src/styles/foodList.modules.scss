@@ -132,6 +132,7 @@ $bg_color: #c5c4c4;
                         min-height: 50px;
                         position: initial;
                     }
+
                     padding: {
                         left: 10px;
                         right: 10px;
@@ -155,6 +156,11 @@ $bg_color: #c5c4c4;
                         @include mediaQueries.for-phone-only{
                             font-size: 30px;
                         }
+                    }
+                    img{
+                        object-fit: contain;
+                        width: 100%;
+                        height: 50%;
                     }
                     .deleteBtn{
                         box-shadow: 1px 1px 4px 1px $primary_3;

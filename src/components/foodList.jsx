@@ -105,6 +105,12 @@ function FoodList(){
                            foods.length > 0 ? foods.map((food) => {
                               return  <div className="card" key={food.id}>
                                     <div className="imageContainer">
+                                        {
+                                            food.image == null || food.image == undefined?
+                                            null:
+                                            <img src={food.image} alt="" />
+
+                                        }
                                         <p>{food.food}</p>
                                         <button onClick={() =>deleteFood(food.id) } className="deleteBtn">
                                             <MdDeleteForever/>&nbsp;Delete Recipe
