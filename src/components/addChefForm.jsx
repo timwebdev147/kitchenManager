@@ -128,7 +128,7 @@ function    AddChefForm(){
         let requestObject = {};
         formFields.fields.forEach(field => {
             requestObject[field.name] = field.value;
-            console.log(field)
+            console.log(requestObject)
             
             if (field.type == 'file') {
                 requestObject[field.name] = image;
@@ -216,7 +216,7 @@ function    AddChefForm(){
 
            
             <div className="form-submit">
-                <button onClick={handleSubmit} type="submit"><GrFormAdd className="icon" /> Add Recipe  </button>
+                <button onClick={handleSubmit} type="submit"><GrFormAdd className="icon" /> Add Chef  </button>
             </div>
         </form>
         </div>

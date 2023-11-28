@@ -42,7 +42,7 @@ const BaseView = () => {
             <Link to={'/login'}><RiLoginCircleFill className="menu-icon" />Sign in</Link>
             <Link to={'/register'}><IoIosPersonAdd className="menu-icon"/>Sign up</Link>
             <p>
-                    Copyright © Kitchen-Manager 2022 Created By Akinsanmi Timothy
+                    Copyright © Kitchen-Manager 2022 Created By S.A.C Tech Limited
             </p>
         </div>
         <>

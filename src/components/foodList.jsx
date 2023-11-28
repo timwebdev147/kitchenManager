@@ -18,7 +18,7 @@ function FoodList(){
     const url = 'https://foodlist-api.vercel.app/foods';
 
     const getAllFoods = () => {
-        axios.get(url)
+        axios.get(`${url}/`)
         .then((response) => {
             const allFoods = response.data.data.data;
             getFoods(allFoods);
@@ -38,9 +38,10 @@ function FoodList(){
         if (window.confirm('Are you sure you want to delete?')) {
             client.delete(`${id}`)
         .then((response) => {
+            console.log(response.data); 
             const allFoods = response.data.data.data;
             getFoods(allFoods);
-            alert('delete successful')
+            // alert('delete successful')
             getFoods(
                 foods.filter((food) => {
                     return food.id !== id;
